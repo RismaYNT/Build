@@ -39,10 +39,10 @@ jobs:
         echo "BUILD_USER=$(cat config.env | grep "BUILD_USER" | head -n 1 | cut -d "=" -f 2)" >> $GITHUB_ENV
         echo "BUILD_NAME=$(cat config.env | grep "BUILD_NAME" | head -n 1 | cut -d "=" -f 2)" >> $GITHUB_ENV
 
-    - name: Set swap to 24G
+    - name: Set swap to 20G
       uses: pierotofy/set-swap-space@master
       with:
-        swap-size-gb: 24
+        swap-size-gb: 20
 
     - name: Setup build kernel environment
       run: |
