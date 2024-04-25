@@ -56,7 +56,7 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
         mkdir clang
-        git clone https://gitlab.com/Risma-pwd/clang.git -b clang-17 clang
+        git clone https://gitlab.com/Risma-pwd/clang.git -b clang-13 clang
         
     - name: Fetch GCC-AOSP
       run: |
