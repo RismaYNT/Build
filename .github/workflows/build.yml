@@ -1,4 +1,4 @@
-name: Kernel Builder
+name: Kernel Build
 
 on:
   watch:
@@ -120,7 +120,8 @@ jobs:
         cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
         export PATH=$GITHUB_WORKSPACE/kernel_workspace/clang/bin:$PATH
         export KBUILD_BUILD_USER="Risma"
-        export KBUILD_BUILD_HOST="PWD"
+        export KBUILD_BUILD_HOST=$(uname -a | awk '{print $2}')
+        export DISTRO=$(cat /etc/issue)
         make -j$(nproc --all) CC=clang O=out ARCH=${{ env.ARCH }} ${{ env.CUSTOM_CMDS }} ${{ env.EXTRA_CMDS }} ${{ env.GCC_64 }} ${{ env.GCC_32 }} ${{ env.KERNEL_CONFIG }}
         if [ ${{ env.ENABLE_CCACHE }} = true ]; then
             make -j$(nproc --all) CC=clang O=out ARCH=${{ env.ARCH }} ${{ env.CUSTOM_CMDS }} ${{ env.EXTRA_CMDS }} ${{ env.GCC_64 }} ${{ env.GCC_32 }}
