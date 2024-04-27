@@ -78,7 +78,7 @@ jobs:
     - name: Download kernel source
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
-        git clone https://github.com/RismaYNT/oc_a13r.git -b 21 --depth=1 android-kernel        
+        git clone https://github.com/RismaYNT/oc_a13r.git -b a13r --depth=1 android-kernel        
 
     - name: KernelSU Patch
       if: env.USE_KERNELSU == 'true'
